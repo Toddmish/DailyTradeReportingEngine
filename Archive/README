@@ -1,0 +1,13 @@
+The Archive folder contains an alternative implementation of InstructionReceiver
+which when receiving a new instruction adjusts its settlement date and then creates
+a new object of InstructionWithSettlDateAdjusted type which contains a reference to
+already adjusted instructions. And it is exactly the object of InstructionWithSettlDateAdjusted type
+which is added in the collection of received instructions.
+
+
+Object of type StatisticsGenerator will operate only on InstructionWithSettlDateAdjusted type.
+In this way is assured that statistics are generated on instructions with settlement date already
+corrected.
+
+Template method pattern is used to assure that method which adjusts settlement date is
+called before method which adds instruction of type InstructionWithSettlDateAdjusted is called.
